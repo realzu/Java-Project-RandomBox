@@ -2,7 +2,7 @@ package com.pj.mini;
 
 import java.io.Serializable;
 
-public class ProjectMnVO  implements Serializable{
+public class ProjectMnVO implements Serializable{
 	
 	private String id;
 	private String pw;
@@ -38,8 +38,7 @@ public class ProjectMnVO  implements Serializable{
 		return tel;
 	}
 	public void setTel(String tel) {
-		this.tel = tel;
-	
+		this.tel = tel;	
 	}
 		
 	@Override
