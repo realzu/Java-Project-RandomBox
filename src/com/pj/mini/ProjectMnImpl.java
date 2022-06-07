@@ -140,11 +140,11 @@ public class ProjectMnImpl implements ProjectMn,Runnable{
 	}			
 
 	@Override
-	public int input() throws Exception {
+	public int input() throws Exception { //회원가입
 		
 		int result = 0;
 		
-		System.out.println("[회원가입]\n");
+		System.out.println("[1. 회원가입]\n");
 		System.out.print("이름?");
 		pj.setName(sc.next());
 		
@@ -156,9 +156,9 @@ public class ProjectMnImpl implements ProjectMn,Runnable{
 		
 		for(int i=0;i<pj.getId().length();i++) {
 			
-			char chid = pj.getId().charAt(i);
+			char charId = pj.getId().charAt(i);
 			
-			if((chid<'a')||(chid>'z'))
+			if((charId<'a')||(charId>'z'))
 				throw new Exception("아이디는 영소문자만 가능합니다.");	
 		}
 		
@@ -172,21 +172,22 @@ public class ProjectMnImpl implements ProjectMn,Runnable{
 		
 		for(int j=0;j<pj.getPw().length();j++) {
 			
-			char chpw = pj.getPw().charAt(j);
+			char charPw = pj.getPw().charAt(j);
 			
-			if(('a'<=chpw && chpw<='z')||(chpw>='A' && chpw<='Z')) {
+			if(('a'<=charPw && charPw<='z')||('A'<=charPw && charPw<='Z')) {
 				eng++;				
 			}else if(0<=num && num<=9) {
 				num++;
-			}			
+			}
+			
 		} if(eng==0||num==0)
 			throw new Exception("비밀번호는 영문자 및 숫자만 가능합니다.");
 		
-		String pww;
+		String pwCk;
 		do {
 			System.out.print("비밀번호 재확인?");
-			 pww = sc.next();
-		}while(!pww.equals(pj.getPw()));
+			pwCk = sc.next();
+		}while(!pwCk.equals(pj.getPw()));
 				
 		System.out.print("휴대폰 번호?");
 		pj.setTel(sc.next());
@@ -222,10 +223,10 @@ public class ProjectMnImpl implements ProjectMn,Runnable{
 	
 	
 	@Override
-	public void print() {		
+	public void print() {//회원 정보 확인	
 		
 	try {
-		System.out.println("[회원 정보 확인]\n");
+		System.out.println("[2. 회원 정보 확인]\n");
 		
 		System.out.print("확인할 id를 입력해주세요.");
 		String str = sc.next();
@@ -270,7 +271,7 @@ public class ProjectMnImpl implements ProjectMn,Runnable{
 	
 
 	@Override
-	public void event() {
+	public void event() {//이벤트 안내
 		
 		String dab;
 		
@@ -305,7 +306,7 @@ public class ProjectMnImpl implements ProjectMn,Runnable{
 	}
 
 	@Override
-	public void ranran() {
+	public void ranran() { //랜덤
 		
 		Random rd = new Random();
 
@@ -336,7 +337,7 @@ public class ProjectMnImpl implements ProjectMn,Runnable{
 		System.out.println("배송지 주소 : "+ pj.getAddress());
 	}
 
-	public void check() {
+	public void check() { //이벤트 결과 확인
 		
 		int suu; 
 
@@ -345,11 +346,12 @@ public class ProjectMnImpl implements ProjectMn,Runnable{
 			System.out.println("                                                                      <메뉴>");
 			System.out.println("\n                 1.당첨 확인                    2.배송지 변경                    3.연락처 변경                    4.종료");
 			System.out.println("===============================================================================================================================================\n");
+			
 			suu = sc.nextInt();
 
 			switch(suu) {
 			case 1:
-				System.out.println("[당첨 확인]\n");
+				System.out.println("[1. 당첨 확인]\n");
 				System.out.printf("%s님이 당첨된 화장품은 <%s 파운데이션> ",pj.getName(),fd[type-1]);
 				for(int su : num) { 
 					System.out.printf("<%s> ",cos[su-1]);
@@ -359,14 +361,14 @@ public class ProjectMnImpl implements ProjectMn,Runnable{
 				System.out.println("\n연락처 : " + pj.getTel());
 				break;
 			case 2:
-				System.out.println("[배송지 변경]\n");
+				System.out.println("[2. 배송지 변경]\n");
 				System.out.print("변경할 배송지 주소를 입력해주세요.");
 				pj.setAddress(sc.next());
 				System.out.println("\n변경되었습니다!");
 				System.out.println("\n변경된 주소 : "+ pj.getAddress());
 				break;	
 			case 3:
-				System.out.println("[연락처 변경]\n");
+				System.out.println("[3. 연락처 변경]\n");
 				System.out.print("변경할 연락처를 입력해주세요.");
 				pj.setTel(sc.next());
 				System.out.println("\n변경되었습니다!");
@@ -506,8 +508,5 @@ public class ProjectMnImpl implements ProjectMn,Runnable{
 		} catch (Exception e) {
 			// TODO: handle exception
 		}*/
-	}
-
-	
-	
+	}	
 }
