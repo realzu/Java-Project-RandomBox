@@ -38,7 +38,9 @@ public class ProjectMnMain {
 				System.out.println("                                                                     <메뉴>");
 				System.out.print("\n                               1.회원가입                       2.회원 정보 확인                         3.이벤트 참여");
 				System.out.println("\n===============================================================================================================================================\n");
+				
 				ch = sc.nextInt();
+				
 			}while(ch<1);
 			
 			switch (ch) {
@@ -88,8 +90,9 @@ public class ProjectMnMain {
 				// TODO: handle exception
 			}
 			
-			ob.ranran();
-			ob.check(); break;
+			ob.ranran(); //랜덤			
+			ob.check(); break; //이벤트 결과 확인
+			
 			case 4:
 				System.out.println("관리자 모드에 진입합니다.");
 				System.out.println("<회원 목록>");
