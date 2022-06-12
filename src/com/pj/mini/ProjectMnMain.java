@@ -92,13 +92,8 @@ public class ProjectMnMain {
 			
 			ob.ranran(); //랜덤			
 			ob.check(); break; //이벤트 결과 확인
-			
-			case 4:
-				System.out.println("관리자 모드에 진입합니다.");
-				System.out.println("<회원 목록>");
-				ob.printfile(); break;
-			default : System.out.println("숫자 입력 오류!!"); break;
-			
+
+			default : System.out.println("숫자 입력 오류!!"); break;			
 			}
 		}		
 	}
