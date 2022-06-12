@@ -20,37 +20,6 @@ public class ProjectMnImpl implements ProjectMn,Runnable{
 	
 	private File ff = new File("c:\\\\doc\\\\projectmnii.txt");
 	
-	/*public ProjectMnImpl() {
-		try {
-		if(!ff.exists()) {
-			ff.createNewFile();
-		}
-		
-	}catch(IOException e) {
-		e.toString();
-	}*/
-	
-	/*public ProjectMnImpl() {
-		try {
-			if(!ff.getParentFile().exists()) { 
-				ff.getParentFile().mkdir();
-			}
-			if(ff.exists()) {
-				ff.cre
-			
-				FileInputStream fis = new FileInputStream(ff);
-				ObjectInputStream ois = new ObjectInputStream(fis);
-
-				lists = (ArrayList<ProjectMnVO>)ois.readObject();
-				fis.close();
-				ois.close();
-			}
-
-		}catch (Exception e) {
-			// TODO: handle exception
-		}	
-	}*/
-	
 	ProjectMnVO pj = new ProjectMnVO();
 	
 	int num[];
@@ -117,9 +86,7 @@ public class ProjectMnImpl implements ProjectMn,Runnable{
 				}
 			}
 		}
-	}
-	
-	
+	}	
 	
 	@Override
 	public void write() {
@@ -196,31 +163,9 @@ public class ProjectMnImpl implements ProjectMn,Runnable{
 		pj.setAddress(sc.next());
 		
 		lists.add(pj);
-		
-		try {
-			
-			if(!ff.getParentFile().exists()) { 
-				ff.getParentFile().mkdir();
-			}
-			
-			//if(lists!=null) {
-
-				FileOutputStream fos = new FileOutputStream(ff);
-				ObjectOutputStream oos = new ObjectOutputStream(fos);
-		
-				oos.writeObject(lists);
-				oos.flush();			
-				fos.close();
-				oos.close();						
-				
-			//}
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
 							
 		return result;		
-	}
-	
+	}	
 	
 	@Override
 	public void print() {//회원 정보 확인	
@@ -242,31 +187,14 @@ public class ProjectMnImpl implements ProjectMn,Runnable{
 		while(it.hasNext()) {
 			
 			ProjectMnVO vo = it.next();
-			//if(str.equals(vo.getId())) {
-				System.out.println(vo.toString());
-			//}
+			System.out.println(vo.toString());
 		}
-		/*
-		while(it.hasNext()) {
-			if(str.equals(pj.getId())) {	
-				ProjectMnVO pj = it.next();
-				//if(pj.getId().equals(str)) {
-			    // System.out.println(pj.toString());
-				System.out.println("q");
-				} else {
-					System.out.println("d");
-				}
-			}
-		fis.close();
-		ois.close();
-		*/
 		
 		} catch(IOException e) {
 			System.out.println(e.toString());
 		} catch(ClassNotFoundException e) {
 			System.out.println(e.toString());
-		}
-		
+		}		
 	}
 	
 
@@ -300,7 +228,6 @@ public class ProjectMnImpl implements ProjectMn,Runnable{
 			
 		}else if(dab.equals("N")) {
 			System.out.println("이벤트 참여가 종료되었습니다.");
-			recordfile();
 			System.exit(0);
 		}				
 	}
@@ -376,35 +303,12 @@ public class ProjectMnImpl implements ProjectMn,Runnable{
 				break;
 			case 4:
 				System.out.println("이벤트 페이지를 종료합니다.");
-				recordfile();
 				System.exit(0);
 
 			default :
 				System.out.println("숫자 입력 오류!");
 
 			}
-		}		
-	}
-	
-	@Override
-	public void recordfile() {	//파일 내보냄(저장)
-		
-		try {
-			
-			if(lists!=null) {
-
-				FileOutputStream fos = new FileOutputStream(ff,true);
-				ObjectOutputStream oos = new ObjectOutputStream(fos);
-		
-				oos.writeObject(lists);
-				oos.flush();
-								
-				fos.close();
-				oos.close();						
-				
-			} 
-		} catch (Exception e) {
-			// TODO: handle exception
 		}		
 	}
 
@@ -465,48 +369,4 @@ public class ProjectMnImpl implements ProjectMn,Runnable{
 			System.out.println(e.toString());
 		}		
 	}
-
-	@Override
-	public void printfile() {
-		
-		//파일 읽어옴
-		try {
-			/*if(!ff.getParentFile().exists()) { 
-				ff.getParentFile().mkdir();
-			}*/
-			if(ff.exists()) {
-				FileInputStream fis = new FileInputStream(ff);
-				ObjectInputStream ois = new ObjectInputStream(fis);
-
-				ArrayList<ProjectMnVO> arr = (ArrayList<ProjectMnVO>)ois.readObject();
-				fis.close();
-				ois.close();
-				lists  = arr;
-				System.out.println(lists);
-			}
-
-		}catch (Exception e) {
-			// TODO: handle exception
-		}
-		
-		//파일 출력
-		/*try {
-			
-			if(lists!=null) {
-
-				FileOutputStream fos = new FileOutputStream(ff,true);
-				ObjectOutputStream oos = new ObjectOutputStream(fos);
-		
-				oos.writeObject(lists);
-				oos.flush();
-								
-				fos.close();
-				oos.close();						
-				
-			} System.out.println(lists);
-			
-		} catch (Exception e) {
-			// TODO: handle exception
-		}*/
-	}	
 }
